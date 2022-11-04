@@ -1,3 +1,5 @@
+**Make sure you install the VSCode extension when it asks.** It will make it so VSCode recommends you Tailwind classes. Took a lot of the pain out of Tailwind for me.
+
 Design system walkthrough to try see if we can iron out if this will create good DX.
 My instinct is that this worked out quite well. But I don't know how it will scale.
 
