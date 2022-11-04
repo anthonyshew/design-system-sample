@@ -1,27 +1,26 @@
-# Next.js + Tailwind CSS Example
+Design system walkthrough to try see if we can iron out if this will create good DX.
+My instinct is that this worked out quite well. But I don't know how it will scale.
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+Start in /external-lib/Button.tsx. This would be our shared npm package example.
 
-## Deploy your own
+Then go to /components/Button.tsx. This would be the example of us consuming that npm package and setting the styles for that project.
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+Then /app/page.tsx is the final implementation.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+Things I like:
 
-## How to use
+- This is genuinely really simple and has a tiny footprint.
+- It's very "native web" and "native React." Not a lot of magic.
+- No CSS-in-JS (React team is saying to stop doing it) but still keeping control of styling using JS because of cva.
+- Tailwind isn't so bad after all. I think I might be starting to drink the kool-aid.
+- The TypeScript for our styles stays pretty tight because of cva. Great little lib.
+- We can really make this our own and ensure we aren't battling our design system.
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+Things I'm not sure of:
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-```
+- Does this meet our use case? We have to hit the right amount of flexibility but also get the work-to-value ratio right. The tradeoffs here are reaaaaally murky until we put our foot on the gas and just try it.
+- Will Radix primitives give us everything we need? At first glance, yes, as far as a11y is concerned. But what will we miss from Mantine?
 
-```bash
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
+Things I think I don't like:
 
-```bash
-pnpm create next-app --example with-tailwindcss with-tailwindcss-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+- I feel like in the "external lib" I just kinda rewrote JSX. To be fair, I didn't bring in Radix yet so maybe the difference would be more profound if I built a popover or something.
