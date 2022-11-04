@@ -21,9 +21,9 @@ interface Props extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "color"> {
   children: ReactNode;
 }
 
-export const MyButton = ({ children, ...props }: Props) => {
+export const MyButton = ({ children, styleProps, ...props }: Props) => {
   return (
-    <Button className={buttonStyles({ ...cva })} {...props}>
+    <Button className={buttonStyles({ ...styleProps })} {...props}>
       {children}
     </Button>
   );
